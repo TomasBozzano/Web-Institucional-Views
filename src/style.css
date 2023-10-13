@@ -1,0 +1,274 @@
+/* COMIENZO DEL CSS PARA INDEX */
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-attachment: fixed;
+    background-color: #388cfaaa;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    /* background: repeating-linear-gradient(
+  -45deg,
+  #0d3960,
+  #0d3960 70px,
+  #0d4c6b 70px,
+  #0d4c6b 150px
+); */
+}
+footer{
+    padding-top: 200px;
+}
+.titulo{
+    padding-top: 15%;
+    font-size: 18px;
+    color: white;
+}
+.logo{
+    border-radius: 350px;
+    width: 50%;
+}
+.main{
+    margin-top: 10%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align:center;
+    font-size: 18px;
+    font-style: bold;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    border-color: black;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.input{
+    padding-top: 15px;
+}
+.credentials{
+    text-align: center;
+    border-radius: 15px;
+    height: 30px;
+    width: 250px;
+}
+.recuerdame{
+    padding-left: 5px;
+}
+.button {
+    margin-top: 15px;
+    /* background-color: #007bff; */
+    background-color: #0f3e7d;
+    border-radius: 5px;
+    margin-bottom: 10px; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.button:hover{
+    background-color: rgb(3, 166, 254);
+}
+/* @media(min-width:720px){
+    body{
+        flex: auto;
+        background: repeating-linear-gradient(
+  -45deg,
+  #4f7ad4,
+  #4f7ad4 250px,
+  #4d9afd 200px,
+  #4d9afd 350px
+);
+    }
+} */
+
+/* FIN DEL CSS PARA INDEX */
+/* COMIENZO DEL CSS PARA HOME */
+.menu{
+    /* background-color: #0d3960; */
+    background-color: #3383ed;
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.linea{
+    background-color: #fa8748;
+    height: 5px;
+}
+.menu .nombre{
+    color: white;
+    flex: 1;
+    text-align: left;
+    padding-left: 15px;
+}
+.menu .logo{
+    border-radius: 350px;
+    width: 15%;
+    align-content: flex-end;
+    max-width: 100%;
+    margin-right: 25px;
+}
+.main-menu{
+    margin-top: 25%;
+    margin-bottom: 50%;
+    text-align:center;
+    font-size: 18px;
+    font-style: bold;
+    border-radius: 15px;
+    border-color: black;
+}
+.center-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+}
+.center-div .button-menu{
+    margin-top: 15px;
+    /* background-color: #007bff; */
+    background-color: #0f3e7d;
+    border-radius: 5px;
+    margin-bottom: 10px; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 350px;
+    height: 75px;
+}
+.button-salir{
+    margin-top: 50px;
+    /* background-color: #007bff; */
+    background-color: #0f3e7d;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 150px;
+}
+/* body {
+    text-align: center;
+    padding: 15 px;
+    margin: 15px;
+}
+main {
+    border: 15px black;
+    padding: 1rem;
+    border-radius: 52px;
+}
+.dni-person .pass-person{
+    margin: 2px;
+    margin-top: 2rem;
+} */
+/* FIN DE CSS DEL HOME */
+/* INICIO DE CSS PARA MATERIAS */
+.container{
+    width: 100%;
+    max-width: 2000px;
+    margin: auto;
+}
+.table{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    table-layout: fixed;
+}
+.table caption{
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 8px 0px;
+}
+.table tr{
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+}
+.table th, table td{
+    font-size: 12px;
+    padding: 8px;
+    text-align: center;
+}
+.table thead th{
+    text-transform: uppercase;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+}
+.table tbody tr:hover{
+    background-color: rgb(0, 0, 0, 0.2);
+}
+.table tbody td:hover{
+    background-color: rgb(0, 0, 0, 0.3);
+}
+@media screen and (max-width: 600px){
+    .table{
+        border: 0px;
+    }
+    .table caption{
+        font-size: 22px;
+    }
+    .table thead{
+        display: none;
+    }
+    .table tr{
+        margin-bottom: 8px;
+        border-bottom: 4px solid #ddd;
+        display: block;
+    }
+    .table th, .table td{
+        font-size: 12px;
+    }
+    .table td{
+        display: block;
+        border-bottom: 1px solid #ddd;
+        text-align: right;
+    }
+    .table td:last-child{
+        border-bottom: 0px;
+    }
+    .table td::before{
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        float: left;
+    }
+}
+/* FIN DE CSS DEL MATERIAS */
+/* INICIO DE CSS PARA INSCRIPTOS FINALES */
+
+.container {
+    text-align: center;
+    margin-top: 5px;
+}
+.clickable-div {
+    background-color: #0f3e7d;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+.hidden-content {
+    display: none;
+    color: #333;
+    padding: 10px;
+}
+.inscriptos{
+    background-color: rgb(219, 219, 219);
+    margin: 0;
+    padding: 0;
+}
+.inscriptos h2{
+    font-size: 24px;
+}

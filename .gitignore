@@ -1,0 +1,9 @@
+#Ignorar la carpeta de Node_Modelus
+node_modules
+
+#Ignora Package JSon
+package.json
+package-lock.json
+
+#Ignorar la carpeta config
+.env
