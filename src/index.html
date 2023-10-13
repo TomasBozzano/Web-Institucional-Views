@@ -13,15 +13,15 @@
     </header>
     <main>
     <div class="main">
-        <form action="" class="form">
+        <form action="/inicioSesion" class="form" method="POST"> <!-- Cambiado a POST -->
             <div class="input">
-                <input type="text" id="dni" placeholder="DNI" class="credentials">
+                <input type="text" name="dni" placeholder="DNI" class="credentials">
             </div>
             <div class="input">
-                <input type="password" id="clave" placeholder="Contraseña" class="credentials">
+                <input type="password" name="clave" placeholder="Contraseña" class="credentials">
             </div>
             <div class="input">
-                <input type="checkbox"><label class="recuerdame">Recuerdame</label>
+                <input type="checkbox"><label class="recuerdame">Recuérdame</label>
             </div>
             <button class="button" type="submit">Ingresar</button>
         </form>

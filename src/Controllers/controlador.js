@@ -3,7 +3,7 @@ const obtenerDatos = require ('./inicioSesion')
 
 const controlador = {
     inicio, 
-    obtenerDatos
+    obtenerDatos,
 }
 
 module.exports = controlador
