@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false}))
 // Rutas (URL´s)
 app.get('/', controlador.inicio);
 app.post('/inicioSesion', controlador.obtenerDatos);
+app.get('/materias', controlador.materiasProfesor)
 
 // Establecemos la carpeta estática para servir el archivo 'index.html'
 app.use(express.static(path.join(__dirname)));
