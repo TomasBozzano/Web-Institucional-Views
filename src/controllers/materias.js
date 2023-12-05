@@ -1,6 +1,7 @@
-const conexion = require('../../Database/conexion');
+const conexion = require('../database/conexion');
 
 const materiasProfesor = (req, res) => {
+  const profesor = req.body.fecha
   // Consulta SQL para obtener las materias del profesor
   const query = `SELECT Carreras.Codigo AS Codigo_carrera, Carreras.Nombre AS Nombre_carrera, Materias.Curso, Materias.Codigo AS Materia_codigo, Materias.Nombre AS Materia_nombre, Divisiones.Division, Divisiones.Libre, Divisiones.Ano FROM ((Divisiones INNER JOIN Personal ON Divisiones.Profesor = Personal.Codigo) INNER JOIN Materias ON Divisiones.Materia = Materias.Codigo) INNER JOIN Carreras ON Materias.Carrera = Carreras.Codigo WHERE (((Divisiones.Ano)=(SELECT AñoMatriculacion FROM Parametros)) AND ((Personal.Codigo)='{usuario}')) ORDER BY Carreras.Nombre, Materias.Curso`;
   // Ejecutar la consulta en la base de datos
