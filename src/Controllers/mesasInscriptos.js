@@ -3,12 +3,13 @@ const conexion = require('../Database/conexion');
 const mesasAlumnos = (req, res) => {
   const codigo = req.body.profesorCodigo;
   const año = new Date().getFullYear();
+  const mes = new Date().getMonth() + 1;
 
   const mesaQuery = `SELECT Mesas.Numero, Format(Mesas.Fecha, 'dd/mm/yyyy') as Fecha,  Format(Mesas.Hora, 'HH:MM') as Hora, Mesas.Titular as CodigoTitular, Mesas.Impresas, Carreras.Abreviatura as Carrera, Materias.Curso, Materias.Nombre as Materia, Personal.Nombre as Titular, Personal_1.Nombre as Integrante1, Personal_2.Nombre as Integrante2, Mesas.Lugar as Lugar, (SELECT Count(Inscripciones.Alumno) AS Total 
   FROM Inscripciones
   WHERE (((Inscripciones.Mesa)=Mesas.Numero) AND ((Inscripciones.FechaBorrado) Is Null))) as Inscriptos
   FROM (((Mesas INNER JOIN (Materias INNER JOIN Carreras ON Materias.Carrera = Carreras.Codigo) ON Mesas.Materia = Materias.Codigo) INNER JOIN Personal ON Mesas.Titular = Personal.Codigo) INNER JOIN Personal AS Personal_1 ON Mesas.Integrante1 = Personal_1.Codigo) INNER JOIN Personal AS Personal_2 ON Mesas.Integrante2 = Personal_2.Codigo
-  WHERE (Personal.Codigo=${codigo} AND Mesas.Ano=${año}) OR (Personal_1.Codigo=${codigo} AND Mesas.Ano=${año}) OR (Personal_2.Codigo = ${codigo} AND Mesas.Ano=${año})
+  WHERE (Personal.Codigo=${codigo} AND Mesas.Turno=${mes} AND Mesas.Ano=${año}) OR (Personal_1.Codigo=${codigo} AND Mesas.Turno=${mes} AND Mesas.Ano=${año}) OR (Personal_2.Codigo = ${codigo} AND Mesas.Turno=${mes} AND Mesas.Ano=${año})
   ORDER BY Mesas.Fecha`;
   conexion
     .query(mesaQuery)

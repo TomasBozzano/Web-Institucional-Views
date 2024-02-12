@@ -1,33 +1,29 @@
 const conexion = require('../Database/conexion');
 
 const modificarProfesor = async (req, res) => {
-  
-  const {
-    codigo,
-    nombre,
-    documento,
-    postal,
-    domicilio,
-    telefono,
-    localidad
-  } = req.body
+  try {
+    // Verificar si la conexión está abierta, de lo contrario, abrir la conexión
+    if (!conexion) {
+      await conexion.connect();
+    }
 
-  // Consulta SQL para actualizar los datos del profesor
-  const query = `UPDATE Personal SET Nombre = '${nombre}', Postal = '${postal}', Domicilio = '${domicilio}', Telefono = '${telefono}', Localidad = '${localidad}' WHERE Codigo = ${codigo} AND Documento='${documento}'`;
+    const { codigo, nombre, documento, postal, domicilio, telefono, localidad } = req.body;
 
- conexion
- .query(query)
- .then(data => {
-  if (data && data.length > 0) {
-    console.log(data)
-    res.status(200).json({ mensaje: 'Datos actualizados exitosamente' });
-  } else {
-    res.status(404).json({ error: 'No se encontraron datos para actualizar' });
+    // Consulta SQL para actualizar los datos del profesor
+    const query = `UPDATE Personal SET Nombre = '${nombre}', Postal = '${postal}', Domicilio = '${domicilio}', Telefono = '${telefono}', Localidad = '${localidad}' WHERE Codigo = ${codigo} AND Documento = '${documento}'`;
+
+    // Ejecutar la consulta
+    const result = await conexion.query(query);
+
+    if (result && result.affectedRows > 0) {
+      res.status(200).json({ mensaje: 'Datos actualizados exitosamente' });
+    } else {
+      res.status(404).json({ error: 'No se encontraron datos para actualizar' });
+    }
+  } catch (error) {
+    console.error('Error en la consulta:', error);
+    res.status(500).json({ error: 'Error en la consulta', details: error.message });
   }
- })
- .catch((error) => {
-  res.status(500).json({ error: 'Error en la consulta', details: error.message });
-  });
-}
+};
 
 module.exports = modificarProfesor;
