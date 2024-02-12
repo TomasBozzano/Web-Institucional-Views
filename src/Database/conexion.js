@@ -4,15 +4,11 @@ const DB = process.env.DATABASE;
 
 const connection = adodb.open(DB);
 
-connection
-  .query('SELECT * FROM Personal')
-  .then(() => {
-    console.log('Conexión a la base de datos establecida correctamente');
-  })
-  .catch((error) => {
-    console.error('Error en la conexión a la base de datos:', error);
-  });
+try{
+  if(connection){
+  }
+}catch(error){
+  console.log('Error en la conexión a la base de datos:', error)
+}
 
-module.exports = {
-  connection,
-};
+module.exports = connection;
