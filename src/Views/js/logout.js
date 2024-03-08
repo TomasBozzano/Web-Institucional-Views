@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.removeItem('userData');
         sessionStorage.removeItem('materiasData');
         sessionStorage.removeItem('finalesData');
+        sessionStorage.removeItem('datosData');
 
         // Modificar el historial del navegador para que no pueda volver atrás
         const state = { page: 'index' };
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         history.pushState(null, document.title, location.href);
 
         // Verificar si la ubicación actual es una de las direcciones prohibidas
-        const direccionesProhibidas = ['/html/home.html', '/html/materias.html', '/html/inscriptos_finales.html', '/html/datos.html'];
+        const direccionesProhibidas = ['Views/html/home.html', 'Views/html/materias.html', 'Views/html/inscriptos_finales.html', 'Views/html/datos.html'];
         if (direccionesProhibidas.includes(location.pathname)) {
             // Redirigir a la página de inicio de sesión si está en una dirección prohibida
             window.location.href = '/index.html';

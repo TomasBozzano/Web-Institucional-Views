@@ -34,7 +34,6 @@
                 if (userDataString) {
                     // Si hay datos almacenados, se crea un nuevo objeto
                     const userData = JSON.parse(userDataString);
-                    console.log(userData)
 
                     // Actualiza el contenido del elemento con el ID 'nombreUsuario'
                     document.getElementById('nombreUsuario').textContent = userData.Nombre || 'Nombre de Usuario';

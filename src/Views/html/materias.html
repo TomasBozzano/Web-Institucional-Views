@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,81 +14,48 @@
         <img src="../images/logo.jpg" class="logo">
     </nav>
     <header class="linea"></header>
-    <div class="container">
-        <div class="clickable-div" onclick="toggleDiv()">Materias</div>
-        <div id="hidden-div" class="hidden-content">
+    <h2>Cursadas</h2>
+    <div class="alumno-materia" id="materiasContainer"></div>
+    <!-- MODAL DE ALUMNO-->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="tabla-deslizable">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Codigo carrera</th>
-                        <th>Nombre carrera</th>
-                        <th>Curso</th>
-                        <th>Materia Codigo</th>
-                        <th>Materia nombre</th>
-                        <th>División</th>
-                        <th>Condición</th>
-                        <th>Año</th>
+                        <th>Permiso</th>
+                        <th>Nombre</th>
+                        <th>Parcial</th>
+                        <th>Parcial 2</th>
+                        <th>Total.</th>
+                        <th>Rec</th>
+                        <th>Rec 2</th>
+                        <th>PT1</th>
+                        <th>PT2</th>
+                        <th>PT3</th>
+                        <th>PT4</th>
+                        <th>PT5</th>
+                        <th>Cursada</th>
+                        <th>Asist.</th>
+                        <th>Asis. Porcentaje</th>
                     </tr>
                 </thead>
-                <tbody id="infoMateria">
+                <tbody id="tablaAlumnos">
+                    <h3>Alumnos</h3>
+
                 </tbody>
             </table>
+            </div>
+            <button class="button-salir" id="cancelar-datos"> Cancelar</button>
+            <button class="button-salir" id="guardar-datos"> Guardar</button>
         </div>
     </div>
-    <div class="main-menu">
-        <div class="center-div">
-            <button class="button-salir" id="volver">Volver</button>
-            <script>
-                document.addEventListener('DOMContentLoaded', async () => {
-                    try {
-                        // Intenta obtener los datos del almacenamiento local
-                        const usuarioLogin = sessionStorage.getItem('userData');
-                        const usuarioMateria = sessionStorage.getItem('materiasData');
-
-                        if (usuarioLogin) {
-                            // Si hay datos almacenados, se crea un nuevo objeto
-                            const user = JSON.parse(usuarioLogin);
-                            // Actualiza el contenido del elemento con el ID 'nombreUsuario'
-                            document.getElementById('nombreUsuario').textContent = user.Nombre || 'Nombre de Usuario';
-                        }
-
-                        if (usuarioMateria) {
-                            let materias = JSON.parse(usuarioMateria);
-
-                            // Asegúrate de que materias sea un array
-                            if (!Array.isArray(materias)) {
-                                materias = [materias];
-                            }
-
-                            console.log(materias);
-
-                            // Obtén la referencia al cuerpo de la tabla
-                            const tbody = document.getElementById('infoMateria');
-
-                            // Limpia el contenido actual del cuerpo de la tabla
-                            tbody.innerHTML = '';
-
-                            // Itera sobre cada materia y crea una fila para cada una
-                            materias.forEach(materia => {
-                                // Crea una fila para la materia
-                                const fila = tbody.insertRow();
-
-                                // Itera sobre las propiedades específicas de la materia y crea celdas
-                                const propiedadesMateria = ['Codigo_carrera', 'Nombre_carrera', 'Curso', 'Materia_codigo', 'Materia_nombre', 'Division', 'Condicion', 'Año'];
-
-                                propiedadesMateria.forEach(propiedad => {
-                                    const celda = fila.insertCell();
-                                    celda.textContent = materia[propiedad];
-                                });
-                            });
-                        }
-                    } catch (error) {
-                        console.error('Error al cargar la página: ' + error);
-                    }
-                });
-            </script>
-            <script src="../js/script.js"></script>
-            <script src="../js/back.js"></script>
+    <button class="button-salir" id="volver">Volver</button>
+    <script src="../js/cargarAlumnosMaterias.js"></script>
+    <script src="../js/modificarAlumnos.js"></script>
+    <script src="../js/cancelar.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/back.js"></script>
 </body>
-
 </html>

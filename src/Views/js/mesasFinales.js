@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('El código es undefined. Verifica el valor antes de enviarlo.');
                 return;
             }
-            const mesaData = await cargarFinales("/mesasInscriptos", { profesorCodigo: codigo });
+            const mesaData = await cargarFinales("/mesasFinales", { profesorCodigo: codigo });
 
             if (mesaData && mesaData.length > 0) {
                 const finalData = mesaData;

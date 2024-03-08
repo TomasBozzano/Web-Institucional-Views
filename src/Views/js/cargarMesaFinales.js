@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <img src="../images/estudiante.png" alt="estudiante">
                     <p class="pCantidadInscriptos">${item.mesa.Inscriptos}</p>
                 </span>
-                
             </div>
             <div>
                 <p class="pMateria">${item.mesa.Materia}</p>

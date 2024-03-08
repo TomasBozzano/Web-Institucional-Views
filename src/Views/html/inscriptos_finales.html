@@ -8,7 +8,6 @@
     <meta http-equiv="Expires" content="0">
     <link rel="shortcut icon" href="../images/icono.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/styleMesaFinales.css">
     <title>Instituto N°20 Profesores - Inscriptos Finales</title>
 </head>
 <body>
@@ -17,29 +16,30 @@
         <img src="../images/logo.jpg" class="logo">
     </nav>
     <header class="linea"></header>
-    <div class="mesasContainer"> </div>
+    <h2>Finales</h2>
+    <div class="alumno-materia" id="materiasContainer"></div>
+    <!-- MODAL DE ALUMNO-->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="thPermiso">Perm</th>
+                        <th class="thDni">DNI</th>
+                        <th>Nombre</th>
+                        <th class="thAñoCursada">Año</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaFinal">
+                    <h3>Inscriptos</h3>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
     <button class="button-salir" id="volver">Volver</button>
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                // Intenta obtener los datos del almacenamiento local
-                const userDataString = sessionStorage.getItem('userData');
-
-                if (userDataString) {
-                    // Si hay datos almacenados, se crea un nuevo objeto
-                    const userData = JSON.parse(userDataString);
-                    console.log(userData)
-
-                    // Actualiza el contenido del elemento con el ID 'nombreUsuario'
-                    document.getElementById('nombreUsuario').textContent = userData.Nombre || 'Nombre de Usuario';
-                }
-            } catch (error) {
-                console.error('Error al cargar la página: ' + error);
-            }
-        });
-    </script>
-    <script src="../js/cargarMesaFinales.js"></script>
+    <script src="../js/cargarAlumnoFinales.js"></script>
     <script src="../js/back.js"></script>
 </body>
-
 </html>

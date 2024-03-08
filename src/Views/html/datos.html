@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -15,52 +15,48 @@
         <img src="../images/logo.jpg" class="logo">
     </nav>
     <header class="linea"></header>
+    <h3>TUS DATOS</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Documento</th>
+                <th>Postal</th>
+                <th>Domicilio</th>
+                <th>Telefono</th>
+                <th>Localidad</th>
+            </tr>
+        </thead>
+        <tbody id="infoProfesor">
+        </tbody>
+    </table>
     <div class="container">
-        <div class="clickable-div" onclick="toggleDiv()">Datos</div>
+        <div class="clickable-div" onclick="toggleDiv()">Modificar Datos</div>
         <div id="hidden-div" class="hidden-content">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Documento</th>
-                        <th>Postal</th>
-                        <th>Domicilio</th>
-                        <th>Telefono</th>
-                        <th>Localidad</th>
-                    </tr>
-                </thead>
-                <tbody id="infoProfesor">
-                </tbody>
-            </table>
+                <div class="mod-datos" id="tabla-profesor">
+                        <div class="input">
+                            <label>Nombre: </label><input type="text" name=Nombre id="nombreDato" class="credentials" readonly>
+                        </div>
+                        <div class="input">
+                            <label>Documento: </label><input type="text" name=Documento id="documentoDato" class="credentials" readonly>
+                        </div>
+                        <div class="input">
+                            <label>Postal: </label><input type="text" name=Postal id="postalDato" class="credentials">
+                        </div>
+                        <div class="input">
+                            <label>Domicilio: </label><input type="text" name=Domicilio id="domicilioDato" class="credentials">
+                        </div>
+                        <div class="input">
+                            <label>Telefono: </label><input type="text" name=Telefono id="telefonoDato" class="credentials">
+                        </div>
+                        <div class="input">
+                            <label>Localidad: </label><input type="text" name=Localidad id="localidadDato" class="credentials">
+                        </div>
+                        <button class="button" id="guardar-profesores">Confirmar cambios</button>
+                </div>
         </div>
     </div>
-    <main>
-        <div class="main">
-            <form id="datosModificar">
-                <h2>Modificar datos</h2>
-                <div class="input">
-                    <label>Nombre: </label><input type="text" name=Nombre id="nombreDato" class="credentials">
-                </div>
-                <div class="input">
-                    <label>Documento: </label><input type="text" name=Documento id="documentoDato" class="credentials" readonly>
-                </div>
-                <div class="input">
-                    <label>Postal: </label><input type="text" name=Postal id="postalDato" class="credentials">
-                </div>
-                <div class="input">
-                    <label>Domicilio: </label><input type="text" name=Domicilio id="domicilioDato" class="credentials">
-                </div>
-                <div class="input">
-                    <label>Telefono: </label><input type="text" name=Telefono id="telefonoDato" class="credentials">
-                </div>
-                <div class="input">
-                    <label>Localidad: </label><input type="text" name=Localidad id="localidadDato" class="credentials">
-                </div>
-                <button class="button" type="submit">Confirmar cambios</button>
-            </form>
-        </div>
         <button class="button-salir" id="volver">Volver</button>
-    </main>
             <script>
                 document.addEventListener('DOMContentLoaded', async () => {
                     try {
@@ -88,8 +84,6 @@
                             if (!Array.isArray(datos)) {
                                 datos = [datos];
                             }
-
-                            console.log(datos);
 
                             // Obtén la referencia al cuerpo de la tabla
                             const tbody = document.getElementById('infoProfesor');

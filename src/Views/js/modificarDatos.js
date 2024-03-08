@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cambioDatos = document.getElementById('datosModificar');
-    cambioDatos.addEventListener('submit', async () => {
+    const cambioDatos = document.getElementById('guardar-profesores');
+    cambioDatos.addEventListener('click', async () => {
         event.preventDefault();
         try {
             const userDataString = sessionStorage.getItem('userData');
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Verificar si se actualizó correctamente
             if (loginData && loginData.length == 1) {
-                recargarPagina(loginData[0]); // Pasa los nuevos datos a la función
+                recargarPagina(loginData[0])
                 alert('Datos actualizados exitosamente.');
             } else {
                 throw new Error('Error al actualizar los datos.');
@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error(error.message);
             window.location.href = '/html/home.html';
+
         }
     });
 });

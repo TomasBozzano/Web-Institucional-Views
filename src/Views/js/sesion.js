@@ -13,7 +13,6 @@ form.addEventListener('submit', async (e) => {
         };
 
         const loginData = await cargarLogin("/inicioSesion", requestData);
-        console.log(loginData);
         // Dentro de tu función de submit después de una autenticación exitosa
         if (loginData.length === 1) {
             const userData = loginData[0]; // Supongamos que los datos que deseas mostrar están en el primer elemento del array
