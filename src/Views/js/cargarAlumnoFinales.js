@@ -35,18 +35,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </span>
                         </div>
                     </div>
-                    <div class="materiaHeader">
-                        <p class="pMateria">${final.Materia || 'Nombre de Materia'}</p>
-                        <div class="estudianteHeader">
-                            <button class="botonMateria" name="${final.Numero}"><img src="../images/down.png" class="imagenBoton"></button>
-                        </div>
+                    <div class="materiaMain">
+                        <p class="pMateria" name="${final.Numero}">${final.Materia || 'Nombre de Materia'} <img src="../images/down.png" class="imagenBoton"></p>
                     </div>
                 </div>`;
                 materiasContainer.appendChild(finalElement);
             });
 
             // Agregar evento clic para abrir el modal
-            const modalButtons = document.querySelectorAll('.botonMateria');
+            const modalButtons = document.querySelectorAll('.pMateria');
             modalButtons.forEach(button => {
                 button.addEventListener('click', async (e) => {
                     e.preventDefault();
