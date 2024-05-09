@@ -197,6 +197,12 @@ footer{
     display: flex;
     margin: -0.5rem;
 }
+.materiaMain{
+    position: relative;
+    display: block;
+    margin: -0.5rem;
+    text-align: center;
+}
 .estudianteHeader {
     position: absolute;
     top: 15px;
@@ -215,9 +221,8 @@ footer{
     height: 25px;
 }
 .pMateria{
-    text-align: justify;
+    align-items: center;
     font-weight: bold;
-    padding-left: 25px;
 }
 .pCurso{
     text-align: justify;
@@ -245,23 +250,31 @@ footer{
     margin-top:-2.5rem;
 }
 .imagenBoton{
+    height: 10px;
+    width: 10px;
+}
+.pMateria:hover{
+    color: #3383ed;
+    cursor: pointer;
+}
+.detallesAlumno{
+    display: flex;
+    padding-top: 15px;
     text-align: center;
-    height: 15px;
-    width: 15px; 
-    border-radius: 0.1rem;
+    font-size: 18px;
+    font-style: bold;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    border-color: black;
+    margin-left: 25px;
+    margin-right: 25px;
 }
-.botonMateria:hover{
-    background-color: #388cfaaa;
-
-}
-.datos {
-    width: 30px; /* Ajusta el ancho según lo necesites */
-    height: 30px; /* Ajusta la altura según lo necesites */
-    /* Otros estilos opcionales */
-    padding: 5px; /* Espacio interno alrededor del texto */
-    border: 1px solid #ccc; /* Borde del input */
-    border-radius: 3px; /* Borde redondeado */
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+.datos{
+    padding-left: 15px;
+    padding-top: 5px;
+    border-radius: 15px;
+    height: 30px;
+    width: 100px;
 }
 
 input[type="checkbox"] {
@@ -269,22 +282,6 @@ input[type="checkbox"] {
     transform: scale(0.8); /* Reduce el tamaño del checkbox al 80% */
 }
 
-@media (min-width: 768px) and (max-width: 1023px){
-    body{
-        font-size: 14px;
-    }
-    .materia{
-        width: 600px;
-}
-}
-@media (min-width: 1024px){
-    *{
-        font-size: 16px;
-    }
-    .materia{
-        width: 700px;
-    }
-}
 /* MODAL ALUMNOS POR MATERIAS */
 .modal {
     display: none; /* Por defecto, el modal está oculto */
@@ -304,8 +301,8 @@ input[type="checkbox"] {
     margin: 15% auto; /* Margen superior e inferior automático y 15% desde los lados */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Ancho del contenido del modal */
-    max-width: 600px; /* Ancho máximo del contenido del modal */
+    width: 90%; /* Ancho del contenido del modal */
+    max-width: 1200px; /* Ancho máximo del contenido del modal */
 }
 
 /* Estilos para el botón de cerrar */
@@ -322,13 +319,27 @@ input[type="checkbox"] {
     text-decoration: none;
     cursor: pointer;
 }
-.tabla-deslizable {
-    max-height: 300px; /* Altura máxima para que sea deslizable */
-    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
-  }
-.tabla-deslizable th {
-    width: 100px; /* Puedes ajustar el ancho según tus necesidades */
+.table-finales{
+    width: 100%;
 }
+.detallesAlumno{
+    display: block;
+    align-items: center;
+}
+/* Estilos para los inputs */
+.input-style {
+    width: 50%; /* Ancho completo */
+    padding: 5px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 10px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el borde en el ancho y alto */
+}
+
+/* Estilos para los checkboxes */
+.checkbox-style {
+    margin-right: 15px; /* Margen derecho */
+}
+
 /* FIN DE CSS DEL MATERIAS */
 /* INICIO DE CSS PARA INSCRIPTOS FINALES */
 
@@ -355,78 +366,36 @@ input[type="checkbox"] {
     color: #333;
     padding: 10px;
 }
-.table{
+.table-datos{
     width: 100%;
-    border: 1px solid #ccc;
+    margin: 40px;
     border-collapse: collapse;
-    margin: 0;
-    padding: 0;
-    table-layout: fixed;
+    padding: 15px;
+    margin: auto;
+    text-align: right;
 }
-.table caption{
-    font-size: 28px;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin: 8px 0px;
-}
-.table tr{
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-}
-.table th, table td{
-    font-size: 12px;
-    padding: 8px;
-    text-align: center;
-}
-.table thead th{
-    text-transform: uppercase;
-    background-color: #ddd;
+th, td{
     border: 1px solid #ccc;
+    padding: 8px;
+    margin-right: 10px;
+    text-align: left;
 }
-.table tbody tr:hover{
+tr:nth-of-type(odd) {
+    background-color: lightgray;
+}
+th{
+    background-color: #0f3e7d;
+    color: white;
+    font-weight: bold;
+}
+.table-datos .tbody-datos tr:hover{
     background-color: #0f3e7d;
     color: antiquewhite;
 }
-.table tbody td:hover{
+.table-datos .tbody-datos td:hover{
     background-color: rgb(0, 0, 0, 0.2);
 }
-@media screen and (max-width: 600px){
-    .table{
-        width: 100%;
-        border: 1px solid #ccc;
-        border-collapse: collapse;
-        margin: 0;
-        padding: 0;
-        table-layout: fixed;
-    }
-    .table caption{
-        font-size: 28px;
-        text-transform: uppercase;
-        font-weight: bold;
-        margin: 8px 0px;
-    }
-    .table tr{
-        background-color: #f8f8f8;
-        border: 1px solid #ddd;
-    }
-    .table, table td{
-        font-size: 12px;
-        padding: 8px;
-        text-align: center;
-    }
-    .table thead th{
-        text-transform: uppercase;
-        background-color: #ddd;
-        border: 1px solid #ccc;
-    }
-    .table tbody tr:hover{
-        background-color: #0f3e7d;
-        color: antiquewhite;
-    }
-    .table tbody td:hover{
-        background-color: rgb(0, 0, 0, 0.2);
-    }
-}
+
 .mod-datos{
     padding-top: 5px;
     padding-bottom: 15px;
@@ -438,4 +407,63 @@ input[type="checkbox"] {
     border-color: black;
     margin-left: 25px;
     margin-right: 25px;
+}
+/* MEDIA QUERY DE CSS*/
+@media screen and (max-width: 600px), (min-device-width: 768px) and (max-device-width: 1024px){ 
+    *{
+        font-size: 14px;
+    }
+    .loader {
+        display: none;
+    }
+    .button-menu{
+        max-width: 80%;
+        max-height: 80%;
+    }
+    /*Modal de pantallas*/
+    .modal-content {
+        background-color: #fefefe; /* Fondo blanco */
+        margin: 15% auto; /* Margen superior e inferior automático y 15% desde los lados */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%; /* Ancho del contenido del modal */
+        max-width: 1200px; /* Ancho máximo del contenido del modal */
+    }
+    /*Pantalla de Materias*/
+    .materia{
+        max-width: 90%;
+    }
+    .materiaMain{
+        display: grid;
+    }
+    .pMateria{
+        text-align: center;
+    }
+    /*Pantalla de Finales*/
+    /*Pantalla de datos*/
+    .table-datos .tbody-datos td{
+        display: block;
+        width: 100%;
+    }
+    .table-datos .tbody-datos td:before{
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+    .thead-datos tr{
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr{
+        border: 1px solid #ccc;
+    }
+    td{
+        border-bottom: 1px solid black;
+        position: relative;
+    }
+    .credentials{
+        max-width: 85%;
+        max-height: 80%;
+    }
 }

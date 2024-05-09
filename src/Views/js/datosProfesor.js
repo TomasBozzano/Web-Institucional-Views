@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const datoData = loginData;
             datosPagina(datoData);
         } else {
-            // Manejar el caso en el que no hay datos de finales
+            // Manejar el caso en el que no hay datos de personales
             alert('No se encontraron datos de personales.');
         }
     } catch (error) {
