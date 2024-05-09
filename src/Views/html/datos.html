@@ -16,8 +16,8 @@
     </nav>
     <header class="linea"></header>
     <h3>TUS DATOS</h3>
-    <table class="table">
-        <thead>
+    <table class="table-datos">
+        <thead class="thead-datos">
             <tr>
                 <th>Nombre</th>
                 <th>Documento</th>
@@ -27,7 +27,7 @@
                 <th>Localidad</th>
             </tr>
         </thead>
-        <tbody id="infoProfesor">
+        <tbody class="tbody-datos" id="infoProfesor">
         </tbody>
     </table>
     <div class="container">
@@ -41,7 +41,7 @@
                             <label>Documento: </label><input type="text" name=Documento id="documentoDato" class="credentials" readonly>
                         </div>
                         <div class="input">
-                            <label>Postal: </label><input type="text" name=Postal id="postalDato" class="credentials">
+                            <label>Cod.Postal: </label><input type="text" name=Postal id="postalDato" class="credentials">
                         </div>
                         <div class="input">
                             <label>Domicilio: </label><input type="text" name=Domicilio id="domicilioDato" class="credentials">
@@ -98,7 +98,6 @@
 
                                 // Itera sobre las propiedades específicas de los datos y crea celdas
                                 const propiedadesDatos = ['Nombre', 'Documento', 'Postal', 'Domicilio', 'Telefono', 'Localidad'];
-
                                 propiedadesDatos.forEach(propiedad => {
                                     const celda = fila.insertCell();
                                     celda.textContent = dato[propiedad];
