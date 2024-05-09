@@ -1,7 +1,6 @@
 const guardarDatosButton = document.getElementById('guardar-datos');
 guardarDatosButton.addEventListener('click', async () => {
     const alumnos = datosAlumno();
-    console.log(alumnos)
     const modificadoData = await modificarDatosAlumno("/alumnoModificar", alumnos);
 
     if (modificadoData && modificadoData.length > 0) {

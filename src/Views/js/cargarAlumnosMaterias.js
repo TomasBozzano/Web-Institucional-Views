@@ -38,11 +38,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     </span>
                                 </div>
                             </div>
-                            <div class="materiaHeader">
-                                <p class="pMateria">${materia.Materia || 'Nombre de Materia'}</p>
-                                <div class="estudianteHeader">
-                                    <button class="botonMateria" name="${materia.Materia_codigo}"><img src="../images/down.png" class="imagenBoton"></button>
-                                </div>
+                            <div class="materiaMain">
+                                <p class="pMateria" name="${materia.Materia_codigo}">${materia.Materia || 'Nombre de Materia'} <img src="../images/down.png" class="imagenBoton"></p>
                             </div>
                         </div>
                     `;
@@ -50,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
 
                 // Agregar evento clic para abrir el modal
-                const modalButtons = document.querySelectorAll('.botonMateria');
+                const modalButtons = document.querySelectorAll('.pMateria');
                 modalButtons.forEach(button => {
                     button.addEventListener('click', async (e) => {
                         e.preventDefault();
@@ -130,42 +127,74 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
 
         // Crear una fila para cada alumno
         alumnos.forEach(datosAlumno => {
-            const row = document.createElement('tr');
+            const filaPermisoNombre = document.createElement('tr');
+            const filaDetalles = document.createElement('tr');
 
-            // Iterar sobre las claves del objeto datosAlumno
+            // Crea las celdas para Permiso y Nombre
+            const permisoCell = document.createElement('td');
+            permisoCell.textContent = datosAlumno['Permiso'];
+            permisoCell.classList.add('permiso-span');
+            filaPermisoNombre.appendChild(permisoCell);
+
+            const nombreCell = document.createElement('td');
+            nombreCell.textContent = datosAlumno['Nombre'];
+            filaPermisoNombre.appendChild(nombreCell);
+
+            // Crea la fila de detalles con las celdas adicionales
+            const detallesCell = document.createElement('td');
+            detallesCell.setAttribute('colspan', '15'); // Colspan para ocupar todas las columnas
+            const detallesDiv = document.createElement('div');
+            detallesDiv.classList.add('detallesAlumno');
+
+            // Itera sobre las claves del objeto datosAlumno, excepto Permiso y Nombre
             for (const key in datosAlumno) {
-                if (Object.hasOwnProperty.call(datosAlumno, key)) {
-                    const cell = document.createElement('td');
+                if (Object.hasOwnProperty.call(datosAlumno, key) && key !== 'Permiso' && key !== 'Nombre') {
+                    const input = document.createElement('input');
+                    input.dataset.key = key; // Para identificar la clave de los datos
+                    input.classList.add('datos'); // Agrega la clase para estilos de inputs
 
-                    if (key === 'Nombre') {
-                        cell.textContent = datosAlumno[key];
-                    } else if (key === 'Permiso') {
-                        const span = document.createElement('span');
-                        span.textContent = datosAlumno[key];
-                        span.classList.add('permiso-span');
-                        cell.appendChild(span);
-                    } else if (key.includes('Parcial') || key.includes('Totalizador') || key.includes('Recuperatorio') || key.includes('Practico')) {
-                        const input = document.createElement('input');
-                        input.classList.add('datos');
+                    if (key === 'Cursada' || key === 'Asistencia') {
+                        input.type = 'checkbox';
+                        input.checked = datosAlumno[key];
+                    } else {
                         input.type = 'text';
                         input.value = datosAlumno[key];
-                        input.dataset.key = key;
-                        cell.appendChild(input);
-                    } else if (key === 'Cursada' || key === 'Asistencia') {
-                        const checkbox = document.createElement('input');
-                        checkbox.type = 'checkbox';
-                        checkbox.checked = datosAlumno[key];
-                        checkbox.dataset.key = key;
-                        cell.appendChild(checkbox);
-                    } else {
-                        cell.textContent = datosAlumno[key];
                     }
 
-                    row.appendChild(cell);
+                    // Agrega un evento para guardar los cambios al editar el input
+                    input.addEventListener('change', function () {
+                        if (key === 'Cursada' || key === 'Asistencia') {
+                            datosAlumno[key] = input.checked;
+                        } else {
+                            datosAlumno[key] = input.value;
+                        }
+                    });
+
+                    const label = document.createElement('label');
+                    label.textContent = `${key}: `;
+                    label.classList.add('label');
+                    detallesDiv.appendChild(label);
+                    detallesDiv.appendChild(input);
+                    detallesDiv.appendChild(document.createElement('br'));
                 }
             }
 
-            tablaAlumnos.appendChild(row);
+            // Oculta la fila de detalles por defecto
+            filaDetalles.style.display = 'none';
+            filaDetalles.appendChild(detallesCell);
+            detallesCell.appendChild(detallesDiv);
+
+            // Agrega los eventos de clic para expandir y contraer la fila de detalles
+            filaPermisoNombre.addEventListener('click', function () {
+                if (filaDetalles.style.display === 'none') {
+                    filaDetalles.style.display = 'table-row';
+                } else {
+                    filaDetalles.style.display = 'none';
+                }
+            });
+
+            tablaAlumnos.appendChild(filaPermisoNombre);
+            tablaAlumnos.appendChild(filaDetalles);
         });
 
         modal.style.display = "block";
