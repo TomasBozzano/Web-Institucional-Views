@@ -5,6 +5,8 @@ guardarDatosButton.addEventListener('click', async () => {
 
     if (modificadoData && modificadoData.length > 0) {
         const datoData = modificadoData;
+    }else{
+        alert('No se han modificado los datos');
     }
 
 });
@@ -56,10 +58,8 @@ const modificarDatosAlumno = async (url, data) => {
         });
 
         if (!response.ok) {
-            throw new Error('Error al enviar los datos modificados al servidor');
+            throw new Error(`Error al enviar los datos modificados al servidor: ${response.status}`);
         }
-
-        alert('Datos modificados guardados exitosamente');
     } catch (error) {
         console.error('Error al enviar los datos modificados:', error);
         alert('Ocurrió un error al enviar los datos modificados al servidor');

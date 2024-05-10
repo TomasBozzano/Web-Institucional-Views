@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (error) {
             console.error(error.message);
+            alert('Datos actualizados exitosamente.');
             window.location.href = '/html/home.html';
 
         }

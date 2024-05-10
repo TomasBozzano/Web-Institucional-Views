@@ -7,6 +7,12 @@ Debemos tener el cuenta que la DB que se utiliza es MICROSOFT ACCESS 2000, en do
 # Verificar DB
 Cada uno deberá dirigirse al archivo .env para cambiar el valor de la ruta, con el de su PC, ejemplo : "C:\Users\tomyc\Downloads" en el punto SOURCE
 
+# Servicio continuo por errores
+pm2 start tu_archivo_de_inicio.js
+pm2 startup //para generar un script de inicio
+pm2 save //Para guardar la configuración actual
+pm2 stop tu_archivo_de_inicio.js //frenar la ejecución
+
 # Herramientas que se utilizan en el proyecto
 -Html
 -Css
@@ -17,5 +23,6 @@ Cada uno deberá dirigirse al archivo .env para cambiar el valor de la ruta, con
             Morgan
             Nodemon
             DotEnv
+            pm2 -g
 )
 -Microsoft Access (DB)
