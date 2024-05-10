@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const spinner = document.getElementById('spinner');
     const materiasBtn = document.getElementById('materiaUsuario');
     materiasBtn.addEventListener('click', async () => {
+        spinner.style.display = 'block';
         try {
             const userDataString = sessionStorage.getItem('userData');
     
@@ -17,12 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const loginData = await cargarMateria("/materias", { profesorCodigo: codigo });
     
             if (loginData && loginData.length > 0) {
+                spinner.style.display = 'none';
                 const materiasData = loginData;
                 materiasPagina(materiasData);
             } else {
+                spinner.style.display = 'none';
                 alert('No se encontraron materias para el usuario.');
             }
         } catch (error) {
+            spinner.style.display = 'none';
             alert('Error al conectar con el servidor: ' + error.message);
         }
     });

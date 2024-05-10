@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const spinner = document.getElementById('spinner');
     const mesasBtn = document.getElementById('finalUsuario');
     mesasBtn.addEventListener('click', async () => {
+        spinner.style.display = 'block';
         try {
             const userDataString = sessionStorage.getItem('userData');
 
@@ -17,13 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const mesaData = await cargarFinales("/mesasFinales", { profesorCodigo: codigo });
 
             if (mesaData && mesaData.length > 0) {
+                spinner.style.display = 'none';
                 const finalData = mesaData;
                 finalesPagina(finalData);
             } else {
                 // Manejar el caso en el que no hay datos de finales
                 alert('No se encontraron datos de finales.');
+                spinner.style.display = 'none';
             }
         } catch (error) {
+            spinner.style.display = 'none';
             alert('Error al conectar con el servidor: ' + error.message);
         }
     });

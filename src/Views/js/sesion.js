@@ -1,9 +1,9 @@
 const form = document.querySelector('.form');
-    
+const spinner = document.querySelector('.spinner');
 form.addEventListener('submit', async (e) => {
+    spinner.style.display = 'block';
     try {
         e.preventDefault(); // Evitamos el comportamiento por defecto
-
         const dni = document.querySelector('[name=dni]').value;
         const clave = document.querySelector('[name=clave]').value;
 
@@ -15,11 +15,13 @@ form.addEventListener('submit', async (e) => {
         const loginData = await cargarLogin("/inicioSesion", requestData);
         // Dentro de tu función de submit después de una autenticación exitosa
         if (loginData.length === 1) {
+            spinner.style.display = 'none'; // Ocultamos el spinner
             const userData = loginData[0]; // Supongamos que los datos que deseas mostrar están en el primer elemento del array
             homePagina(userData);
         }
 
     } catch (error) {
+        spinner.style.display = 'none'; // Ocultamos el spinner
         alert('Su usuario o clave son incorrectas. Por favor, ingrese nuevamente sus datos.');
     }
 });

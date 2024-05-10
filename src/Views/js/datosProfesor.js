@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const spinner = document.getElementById('spinner');
     const datosBtn = document.getElementById('datosPersonal');
     datosBtn.addEventListener('click', async () => {
+        spinner.style.display = 'block';
     try {
         const userDataString = sessionStorage.getItem('userData');
 
@@ -17,13 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const loginData = await cargarProfesor("/profesorDatos", { profesorCodigo: codigo });
 
         if (loginData && loginData.length > 0) {
+            spinner.style.display = 'none';   
             const datoData = loginData;
             datosPagina(datoData);
         } else {
+            spinner.style.display = 'none';
             // Manejar el caso en el que no hay datos de personales
             alert('No se encontraron datos de personales.');
         }
     } catch (error) {
+        spinner.style.display = 'none';
         alert('Error al conectar con el servidor: ' + error.message);
     }
     })
