@@ -3,34 +3,11 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 body{
-    height: 100%;
-    width: 100%;
     margin: 0;
     background-attachment: fixed;
     background-color: #388cfaaa;
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif
-}
-.loader {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.hidden {
-    display: none;
 }
 footer{
     padding-top: 200px;
@@ -82,6 +59,39 @@ footer{
     background-color: rgb(3, 166, 254);
     color: #333;
 }
+footer {
+    text-align: center;
+    padding: 20px; 
+    background-color: #f0f0f0;
+    position: fixed;
+    left: 0; 
+    bottom: 0; 
+    width: 100%; 
+}
+.contendor-spinner {
+    display: none;
+    position: absolute; /* Establece la posición relativa para el contenedor del spinner */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+.spinner {
+    border: 4px solid rgba(0, 0, 0, .1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: black;
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
 /* FIN DEL CSS PARA INDEX */
 /* COMIENZO DEL CSS PARA HOME */
 .menu{
@@ -257,10 +267,11 @@ footer{
     color: #3383ed;
     cursor: pointer;
 }
-.detallesAlumno{
+.detallesAlumno {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Cambiado a flex-start para alinear a la izquierda */
     padding-top: 15px;
-    text-align: center;
     font-size: 18px;
     font-style: bold;
     background-color: whitesmoke;
@@ -269,18 +280,22 @@ footer{
     margin-left: 25px;
     margin-right: 25px;
 }
-.datos{
+
+.detallesAlumno .label {
+    margin-bottom: 5px;
+}
+
+.detallesAlumno .datos {
     padding-left: 15px;
-    padding-top: 5px;
     border-radius: 15px;
     height: 30px;
     width: 100px;
 }
 
 input[type="checkbox"] {
-    /* Si necesitas ajustar el tamaño del checkbox, puedes usar transform y scale */
-    transform: scale(0.8); /* Reduce el tamaño del checkbox al 80% */
+    transform: scale(0.8);
 }
+
 
 /* MODAL ALUMNOS POR MATERIAS */
 .modal {
@@ -409,12 +424,62 @@ th{
     margin-right: 25px;
 }
 /* MEDIA QUERY DE CSS*/
-@media screen and (max-width: 600px), (min-device-width: 768px) and (max-device-width: 1024px){ 
+/* Estilos base para todos los dispositivos */
+@media screen and (max-width: 880px), (min-device-width: 880px) and (max-device-width: 880px){
+    .logo-index {
+        max-width: 200px;
+        height: 200px;
+        border-radius: 350px;
+        padding: 20px;
+    }
+    .main{
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center; 
+    }
+    .main-menu{
+        max-width: 600px; 
+        margin: 0 auto;
+        padding: 20px; 
+        text-align: center;      
+   }
+}
+@media screen and (max-width: 600px), (min-device-width: 880px) and (max-device-width: 1024px){ 
     *{
         font-size: 14px;
     }
-    .loader {
-        display: none;
+    footer {
+        text-align: center;
+        padding: 10px; 
+        background-color: #f0f0f0;
+        width: 100%; 
+    }
+    .main-menu{
+        max-width: 600px; 
+        margin: 0 auto;
+        padding: 20px; 
+        text-align: center;
+    }
+    .center-div .button-menu{
+        margin-top: 15px;
+        background-color: #0f3e7d;
+        border-radius: 5px;
+        margin-bottom: 10px; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 350px;
+        height: 75px;
+    }
+    .logo-index {
+        max-width: 200px;
+        height: 200px;
+        border-radius: 350px;
     }
     .button-menu{
         max-width: 80%;
@@ -422,12 +487,12 @@ th{
     }
     /*Modal de pantallas*/
     .modal-content {
-        background-color: #fefefe; /* Fondo blanco */
-        margin: 15% auto; /* Margen superior e inferior automático y 15% desde los lados */
+        background-color: #fefefe; 
+        margin: 15% auto; 
         padding: 20px;
         border: 1px solid #888;
-        width: 90%; /* Ancho del contenido del modal */
-        max-width: 1200px; /* Ancho máximo del contenido del modal */
+        width: 90%; 
+        max-width: 1200px;
     }
     /*Pantalla de Materias*/
     .materia{
@@ -466,4 +531,26 @@ th{
         max-width: 85%;
         max-height: 80%;
     }
+}
+
+/* Media query para pantallas de laptops y PCs */
+@media only screen and (min-width: 1024px) {
+
+    .logo-index {
+        max-width: 300px;
+        height: 300px;
+        border-radius: 350px;
+    }
+    .main{
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center; 
+    }
+    .main-menu{
+        max-width: 600px; 
+        margin: 0 auto;
+        padding: 20px; 
+        text-align: center;      
+   }
 }
