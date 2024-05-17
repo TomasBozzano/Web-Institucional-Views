@@ -451,6 +451,7 @@ th{
     }
     footer {
         text-align: center;
+        font-size: 18px;
         padding: 10px; 
         background-color: #f0f0f0;
         width: 100%; 
@@ -541,16 +542,55 @@ th{
         height: 300px;
         border-radius: 350px;
     }
+    main{
+        padding: 40px;
+    }
     .main{
         max-width: 600px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 10px;
         text-align: center; 
     }
     .main-menu{
-        max-width: 600px; 
+        max-width: 500px; 
         margin: 0 auto;
-        padding: 20px; 
+        padding: 30px; 
         text-align: center;      
    }
+   footer{
+    text-align: center;
+    margin-top: 20px;
+    margin: 0px auto;
+    padding: 10px;
+    background-color: #f0f0f0;
+    width: 100%;
+   }
 }
+/* Estilos para pantallas de 568px de ancho */
+@media screen and (max-width: 550px) {
+    .logo-index {
+        max-width: 200px;
+        height: 200px;
+        border-radius: 350px;
+    }
+    .main{
+        max-width: 200px;
+        margin: 0 auto;
+        padding: 30px;
+        text-align: center; 
+    }
+    .main-menu{
+        max-width: 200px; 
+        margin: 0 auto;
+        padding: 50px; 
+        text-align: center;
+    }
+    footer {
+        font-size: 10px;
+        text-align: center;
+        padding: 10px; 
+        background-color: #f0f0f0;
+        width: 100%; 
+    }
+}
+
