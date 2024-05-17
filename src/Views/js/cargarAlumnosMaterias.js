@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 modalButtons.forEach(button => {
                     button.addEventListener('click', async (e) => {
                         e.preventDefault();
+                        const alumnos = [];
                         const codigoMateria = button.getAttribute('name');
                         const alumnoMateriasData = await cargarAlumnoMateria("/alumnoMateria", { materia: codigoMateria });
 
@@ -60,12 +61,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 codigoMateria: codigoMateria,
                                 alumnos: alumnoMateriasData
                             };
-
                             // Llamar a la función mostrarAlumnosEnModal con el objeto creado
-                            mostrarAlumnosEnModal(datosMateriaAlumnos);
+                            alumnos.push(datosMateriaAlumnos);
+                             mostrarAlumnosEnModal(datosMateriaAlumnos);
                         } else {
                             alert('No se encontraron datos de Alumnos.');
                         }
+                            const guardarDatosButton = document.getElementById('guardar-datos');
+                            guardarDatosButton.addEventListener('click', async () => {
+                                const modificadoData = await modificarDatosAlumno("/alumnoModificar", alumnos)
+                                window.location.reload();
+                            });
                     });
                 });
 
@@ -200,3 +206,21 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
         modal.style.display = "block";
     }
 }
+
+const modificarDatosAlumno = async (url, data) => {
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ alumnos: data }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error al enviar los datos modificados al servidor: ${response.status}`);
+        }
+    } catch (error) {
+        alert('Los datos fueron modificados exitosamente');
+    }
+};
