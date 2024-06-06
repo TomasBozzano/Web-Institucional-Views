@@ -1,3 +1,4 @@
+// Funcionalidades de la página de mesas de materias
 document.addEventListener('DOMContentLoaded', () => {
     const spinner = document.getElementById('spinner');
     const materiasBtn = document.getElementById('materiaUsuario');
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 });
-
+// Funcion para el envio al servidor con la respuesta
 const cargarMateria = async (url, data) => {
     try {
         const response = await fetch(url, {
@@ -56,7 +57,7 @@ const cargarMateria = async (url, data) => {
     }
 };
 
-
+// Guarda los datos en un sessionStorage y redirige a la página de materias
 const materiasPagina = (data) => {
     try {
         // Almacena los datos en sessionStorage

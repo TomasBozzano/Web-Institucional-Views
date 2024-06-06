@@ -1,3 +1,4 @@
+// Importamos los elementos del DOM
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const usuarioLogin = sessionStorage.getItem('userData');
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error al cargar la página:', error);
     }
 });
-
+// funcion de envio de datos al servidor
 const cargarAlumnoMateria = async (url, data) => {
     try {
         const response = await fetch(url, {
@@ -119,7 +120,7 @@ const cargarAlumnoMateria = async (url, data) => {
         throw error;
     }
 };
-
+// Funcion para mostrar y luego almacenar los valores para poder enviarlos en la llamada al servidor
 function mostrarAlumnosEnModal(datosMateriaAlumnos) {
     const modal = document.getElementById('modal');
     const tablaAlumnos = document.getElementById('tablaAlumnos');
@@ -206,7 +207,7 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
         modal.style.display = "block";
     }
 }
-
+// funcion para enviar los datos al servidor
 const modificarDatosAlumno = async (url, data) => {
     try {
         const response = await fetch(url, {

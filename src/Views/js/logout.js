@@ -1,3 +1,4 @@
+// Objetivo: Cerrar la sesión del usuario y redirigirlo a la página de inicio de sesión
 document.addEventListener('DOMContentLoaded', () => {
     const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
 

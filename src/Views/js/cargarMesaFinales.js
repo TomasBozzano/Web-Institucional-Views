@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
 });
- 
+//  Rotar el icono y mostrar/ocultar los detalles
 const toggleDetails = (details, summary, contenedor) => {
     const span = details.querySelector('.rotateIcon');
 

@@ -1,3 +1,4 @@
+// importamos los elementos del DOM
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const usuarioLogin = sessionStorage.getItem('userData');
@@ -87,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error al cargar la página:', error);
     }
 });
-
+// Funcion de envio de datos al servidor
 const cargarAlumnoFinal = async (url, data) => {
     try {
         const response = await fetch(url, {

@@ -1,3 +1,4 @@
+// Importamos los elementos del DOM
 const form = document.querySelector('.form');
 const spinner = document.querySelector('.spinner');
 form.addEventListener('submit', async (e) => {
@@ -25,7 +26,7 @@ form.addEventListener('submit', async (e) => {
         alert('Su usuario o clave son incorrectas. Por favor, ingrese nuevamente sus datos.');
     }
 });
-
+// Funcion de envio de datos al servidor
 const cargarLogin = async (url, data) => {
     try {
         const response = await fetch(url, {
@@ -44,6 +45,7 @@ const cargarLogin = async (url, data) => {
         throw error;
     }
 };
+// Funcion de redireccion a la pagina de inicio
 const homePagina = (data) => {
     try {
         // Almacena los datos en localStorage

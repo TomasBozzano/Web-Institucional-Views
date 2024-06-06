@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     })
 });
-
+// funcion para enviar los datos al servidor
 const cargarProfesor = async (url, data) => {
     try {
         const response = await fetch(url, {
@@ -55,6 +55,7 @@ const cargarProfesor = async (url, data) => {
         throw error;
     }
 };
+// Guarda los datos en un sessionStorage y redirige a la página de datos
 const datosPagina = (data) => {
     try {
         sessionStorage.setItem('datosData', JSON.stringify(data));

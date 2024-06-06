@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
+// funcion para enviar los datos al servidor
 const cargarFinales = async (url, data) => {
     try {
         const response = await fetch(url, {
@@ -53,7 +53,7 @@ const cargarFinales = async (url, data) => {
         throw error;
     }
 };
-
+// Guarda los datos en un sessionStorage y redirige a la página de finales
 const finalesPagina = (data) => {
     try {
         sessionStorage.setItem('finalesData', JSON.stringify(data));

@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
+// funcion para enviar los datos al servidor
 const cargarDModificar = async (url, data) => {
     try {
         const response = await fetch(url, {
@@ -66,7 +66,7 @@ const cargarDModificar = async (url, data) => {
         throw error;
     }
 };
-
+// Guarda los datos en un sessionStorage y recarga la pagina
 const recargarPagina = (nuevosDatos) => {
     try {
         // Almacena los nuevos datos en sessionStorage
