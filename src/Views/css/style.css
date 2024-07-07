@@ -90,7 +90,29 @@ footer {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
+.main-error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+    box-shadow: #333;
+}
+.contenedor-error{
+    background-color: white;
+    border-radius: 15px;
+    height: 300px;
+    width: 300px;
+}
+.error{
+    color: red;
+    font-size: 25px;
+    padding: 20px;
+}
+.mensaje-error{
+    font-size: 25px;
+    padding: 10px;
+}
 
 /* FIN DEL CSS PARA INDEX */
 /* COMIENZO DEL CSS PARA HOME */
@@ -267,33 +289,34 @@ footer {
     color: #3383ed;
     cursor: pointer;
 }
-.detallesAlumno {
+.inputGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajuste automático de columnas */
+    gap: 15px; /* Espacio entre filas y columnas */
+    width: 100%;
+    max-width: 600px; /* Ancho máximo */
+    margin-top: 20px; /* Espacio superior */
+}
+
+.inputGrid div {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Cambiado a flex-start para alinear a la izquierda */
-    padding-top: 15px;
-    font-size: 18px;
-    font-style: bold;
-    background-color: whitesmoke;
-    border-radius: 15px;
-    border-color: black;
-    margin-left: 25px;
-    margin-right: 25px;
 }
 
-.detallesAlumno .label {
-    margin-bottom: 5px;
+.inputGrid label {
+    margin-bottom: 5px; /* Espacio entre label y input */
+    font-weight: bold; /* Negrita para los labels */
 }
 
-.detallesAlumno .datos {
-    padding-left: 15px;
-    border-radius: 15px;
-    height: 30px;
-    width: 100px;
+.inputGrid input {
+    padding: 10px; /* Espacio interno */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
 }
 
-input[type="checkbox"] {
-    transform: scale(0.8);
+.inputGrid input:disabled {
+    background-color: #f5f5f5; /* Color de fondo para inputs deshabilitados */
+    cursor: not-allowed; /* Cursor para inputs deshabilitados */
 }
 
 
@@ -485,6 +508,10 @@ th{
     .button-menu{
         max-width: 80%;
         max-height: 80%;
+    }
+    .inputGrid {
+        grid-template-columns: 1fr; /* Una columna en pantallas más pequeñas */
+        gap: 10px; /* Espacio reducido entre filas y columnas */
     }
     /*Modal de pantallas*/
     .modal-content {

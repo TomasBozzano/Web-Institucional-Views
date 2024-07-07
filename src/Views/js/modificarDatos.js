@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Error al actualizar los datos.');
             }
         } catch (error) {
-            console.error(error.message);
             alert('Datos actualizados exitosamente.');
             window.location.href = '/html/home.html';
 
