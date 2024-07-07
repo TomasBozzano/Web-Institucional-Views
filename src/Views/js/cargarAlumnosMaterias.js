@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                             // Llamar a la función mostrarAlumnosEnModal con el objeto creado
                             alumnos.push(datosMateriaAlumnos);
                              mostrarAlumnosEnModal(datosMateriaAlumnos);
-                             console.log(alumnos)
                         } else {
                             alert('No se encontraron datos de Alumnos.');
                         }
