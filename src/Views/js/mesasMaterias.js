@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (error) {
             spinner.style.display = 'none';
-            alert('Error al conectar con el servidor: ' + error.message);
+            window.location.href = '/html/error.html';
         }
     });
     
