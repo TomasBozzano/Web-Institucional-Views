@@ -4,25 +4,10 @@ const finalesAlumno = (req, res) => {
     try {
         const mesa = req.body.mesa;
 
-        const queryFinal = ` SELECT a.Permiso, 
-                                a.Nombre, 
-                                a.Documento,
-                                i.Cursada as Cursada
-                            FROM Inscripciones i, 
-                            Alumnos a,
-                            Mesas m,
-                            Finales f
-                            WHERE i.FechaBorrado IS NULL
-                            AND i.Mesa = ${mesa}
-                            AND f.Cursada = TRUE
-                            AND i.Alumno = a.Permiso 
-                            AND i.Mesa = m.Numero
-                            AND m.Materia = f.Materia
-                            AND a.Permiso = f.Alumno
-                            AND m.Turno = (SELECT TurnoLlamado FROM Parametros)
-                            AND m.Ano = (SELECT AñoLlamado FROM Parametros)
+        const queryFinal = `SELECT a.Permiso, a.Nombre, a.Documento, a.correo, a.telefono, i.Cursada as Cursada
+                            FROM Inscripciones i, Alumnos a
+                            WHERE i.FechaBorrado IS NULL AND i.Mesa = ${mesa} AND i.Alumno = a.Permiso 
                             ORDER BY a.Nombre`;
-
         conexion.query(queryFinal)
             .then((data) => {
                 if (data && data.length > 0) {

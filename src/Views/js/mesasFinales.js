@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (error) {
             spinner.style.display = 'none';
-            alert('Error al conectar con el servidor: ' + error.message);
+            window.location.href = '/html/error.html';
         }
     });
 });
@@ -47,7 +47,6 @@ const cargarFinales = async (url, data) => {
         if (!response.ok) {
             throw new Error(`Error al cargar la página: ${response.status}`);
         }
-
         return await response.json();
     } catch (error) {
         throw error;

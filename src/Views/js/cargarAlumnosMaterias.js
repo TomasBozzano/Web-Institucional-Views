@@ -65,18 +65,50 @@ document.addEventListener('DOMContentLoaded', async () => {
                             // Llamar a la función mostrarAlumnosEnModal con el objeto creado
                             alumnos.push(datosMateriaAlumnos);
                              mostrarAlumnosEnModal(datosMateriaAlumnos);
+                             console.log(alumnos)
                         } else {
                             alert('No se encontraron datos de Alumnos.');
                         }
                             const guardarDatosButton = document.getElementById('guardar-datos');
                             guardarDatosButton.addEventListener('click', async () => {
-                                const modificadoData = await modificarDatosAlumno("/alumnoModificar", alumnos)
+                                for(let alumno of alumnos) {
+                                    //Setear valores vacios o nulos a 0
+                                    for(let i = 0; i < alumno.alumnos.length; i++) {
+                                        let campos = [
+                                            "Parcial1", "Parcial2", "Totalizador",
+                                            "Practico1", "Practico2", "Practico3", "Practico4", "Practico5",
+                                            "Recuperatorio1", "Recuperatorio2"
+                                          ];
+                                        
+                                          for (let campo of campos) {
+                                            let valor = alumno.alumnos[i][campo];
+                                        
+                                            if (valor === "" || isNaN(valor)) {
+                                              alumno.alumnos[i][campo] = 0;
+                                            } else {
+                                              valor = Number(valor);
+                                              if (valor > 10) {
+                                                alumno.alumnos[i][campo] = 10;
+                                              } else if (valor < 0) {
+                                                alumno.alumnos[i][campo] = 0;
+                                              }
+                                            }
+                                          }
+                                    }
+                                }
+                                // Llamar a la función modificarDatosAlumno con el arreglo de alumnos
+                                await modificarDatosAlumno("/alumnoModificar", alumnos);
                                 window.location.reload();
                             });
                     });
                 });
 
-
+                window.onclick = function(event) {
+                    const modal = document.getElementById('modal');
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                  }
                 const closeModal = document.querySelector('.close');
                 if (closeModal) {
                     closeModal.addEventListener('click', () => {
@@ -135,7 +167,9 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
         // Crear una fila para cada alumno
         alumnos.forEach(datosAlumno => {
             const filaPermisoNombre = document.createElement('tr');
+            filaPermisoNombre.classList.add('filaPermisoNombre');
             const filaDetalles = document.createElement('tr');
+            filaDetalles.classList.add('filaDetalles');
 
             // Crea las celdas para Permiso y Nombre
             const permisoCell = document.createElement('td');
@@ -153,9 +187,18 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
             const detallesDiv = document.createElement('div');
             detallesDiv.classList.add('detallesAlumno');
 
+            const inputGrid = document.createElement('div');
+            inputGrid.classList.add('inputGrid');
+
             // Itera sobre las claves del objeto datosAlumno, excepto Permiso y Nombre
             for (const key in datosAlumno) {
                 if (Object.hasOwnProperty.call(datosAlumno, key) && key !== 'Permiso' && key !== 'Nombre') {
+                    const fieldContainer = document.createElement('div');
+
+                    const label = document.createElement('label');
+                    label.textContent = `${key}: `;
+                    label.classList.add('label');
+
                     const input = document.createElement('input');
                     input.dataset.key = key; // Para identificar la clave de los datos
                     input.classList.add('datos'); // Agrega la clase para estilos de inputs
@@ -168,6 +211,11 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
                         input.value = datosAlumno[key];
                     }
 
+                    // Deshabilitar los campos "Asistencia" y "Porcentaje de asistencia"
+                    if (key === 'Asistencia' || key === 'AsistenciaPorcentaje') {
+                        input.disabled = true;
+                    }
+
                     // Agrega un evento para guardar los cambios al editar el input
                     input.addEventListener('change', function () {
                         if (key === 'Cursada' || key === 'Asistencia') {
@@ -177,14 +225,13 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
                         }
                     });
 
-                    const label = document.createElement('label');
-                    label.textContent = `${key}: `;
-                    label.classList.add('label');
-                    detallesDiv.appendChild(label);
-                    detallesDiv.appendChild(input);
-                    detallesDiv.appendChild(document.createElement('br'));
+                    fieldContainer.appendChild(label);
+                    fieldContainer.appendChild(input);
+                    inputGrid.appendChild(fieldContainer);
                 }
             }
+
+            detallesDiv.appendChild(inputGrid);
 
             // Oculta la fila de detalles por defecto
             filaDetalles.style.display = 'none';

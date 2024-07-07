@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             const row = document.createElement('tr');
                             row.innerHTML = `
                             <td>${alumno.Permiso || 'Permiso'}</td>
-                            <td>${alumno.Dni || 'DNI'}</td>
+                            <td>${alumno.Documento || 'DNI'}</td>
                             <td>${alumno.Nombre || 'NOMBRE'}</td>
                             <td>${alumno.Cursada || 'AÑO'}</td>
                             `;
@@ -80,6 +80,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const modal = document.getElementById('modal');
                 modal.style.display = "none";
             });
+
+            window.onclick = function(event) {
+                const modal = document.getElementById('modal');
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+              }
 
         } else {
             console.error('No se encontraron datos de usuario o materias.');
