@@ -197,6 +197,9 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
                     const label = document.createElement('label');
                     label.textContent = `${key}: `;
                     label.classList.add('label');
+                    if(key === 'AsistenciaPorcentaje') {
+                        label.textContent = 'Porcentaje de asistencia: ';
+                    }
 
                     const input = document.createElement('input');
                     input.dataset.key = key; // Para identificar la clave de los datos
@@ -206,13 +209,14 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
                         input.type = 'checkbox';
                         input.checked = datosAlumno[key];
                     } else {
-                        input.type = 'text';
+                        input.type = 'number';
                         input.value = datosAlumno[key];
                     }
 
                     // Deshabilitar los campos "Asistencia" y "Porcentaje de asistencia"
                     if (key === 'Asistencia' || key === 'AsistenciaPorcentaje') {
-                        input.disabled = true;
+                        label.style.display = 'none';
+                        input.type = 'hidden'
                     }
 
                     // Agrega un evento para guardar los cambios al editar el input
