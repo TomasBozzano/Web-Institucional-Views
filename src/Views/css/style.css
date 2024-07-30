@@ -400,6 +400,20 @@ input[type="checkbox"] {
 .thAñoCursada{
     width: 8%;
 }
+.nombreAlumno{
+    text-align: left;
+}
+.thLibre, .thDni, .thPermiso, .thAñoCursada{
+    text-align: center;
+}
+td .datosAlumnosFinales{
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+.documento, .permiso, .cursada{
+    text-align: center;
+}
 /* FIN DE CSS DEL FINALES */
 /*PANTALLA DE DATOS CSS*/
 .clickable-div {
@@ -527,7 +541,7 @@ th{
     .modal-content {
         background-color: #fefefe; 
         margin: 15% auto; 
-        padding: 20px;
+        padding: 10px;
         border: 1px solid #888;
         width: 90%; 
         max-width: 1200px;
@@ -543,6 +557,30 @@ th{
         text-align: center;
     }
     /*Pantalla de Finales*/
+    .table-finales .thead-finales .tbody-finales{
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .thPermiso{
+        width: 5%;
+    }
+    .thDni{
+        width: 7%;
+    }
+    .thAñoCursada{
+        width: 8%;
+    }
+    .nombreAlumno{
+        text-align: left;
+    }
+    .thLibre, .thDni, .thPermiso, .thAñoCursada{
+        text-align: left;
+    }
+    .cursada, .thAñoCursada{
+        display: none;
+    }
     /*Pantalla de datos*/
     .table-datos .tbody-datos td{
         display: block;
@@ -622,6 +660,7 @@ th{
         padding: 50px; 
         text-align: center;
     }
+   
     footer {
         font-size: 10px;
         text-align: center;
