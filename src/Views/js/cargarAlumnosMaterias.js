@@ -197,9 +197,6 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
                     const label = document.createElement('label');
                     label.textContent = `${key}: `;
                     label.classList.add('label');
-                    if(key === 'AsistenciaPorcentaje') {
-                        label.textContent = 'Porcentaje de asistencia: ';
-                    }
 
                     const input = document.createElement('input');
                     input.dataset.key = key; // Para identificar la clave de los datos
@@ -221,6 +218,13 @@ function mostrarAlumnosEnModal(datosMateriaAlumnos) {
 
                     // Agrega un evento para guardar los cambios al editar el input
                     input.addEventListener('change', function () {
+                        //funcion blur para validar el valor del campo antes de guardarlo
+                        input.addEventListener('blur', function() {
+                            if (input.value < 0 || input.value > 10) {
+                                input.value = 0
+                                alert('El valor ingresado no es válido. Debe ser un número entre 0 y 10.');
+                            }
+                        });
                         if (key === 'Cursada' || key === 'Asistencia') {
                             datosAlumno[key] = input.checked;
                         } else {
