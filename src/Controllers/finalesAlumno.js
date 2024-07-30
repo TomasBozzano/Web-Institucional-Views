@@ -4,7 +4,7 @@ const finalesAlumno = (req, res) => {
     try {
         const mesa = req.body.mesa;
 
-        const queryFinal = `SELECT a.Permiso, a.Nombre, a.Documento, a.correo, a.telefono, i.Cursada as Cursada
+        const queryFinal = `SELECT a.Permiso, a.Nombre, a.Documento, a.correo, a.telefono, i.Cursada as Cursada, i.Libre as Libre
                             FROM Inscripciones i, Alumnos a
                             WHERE i.FechaBorrado IS NULL AND i.Mesa = ${mesa} AND i.Alumno = a.Permiso 
                             ORDER BY a.Nombre`;
