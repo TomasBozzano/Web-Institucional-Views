@@ -61,11 +61,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                         alumnoData.forEach(alumno => {
                             const row = document.createElement('tr');
                             row.innerHTML = `
-                            <td>${alumno.Permiso || 'Permiso'}</td>
-                            <td>${alumno.Documento || 'DNI'}</td>
-                            <td>${alumno.Nombre || 'NOMBRE'}</td>
-                            <td>${alumno.Cursada || 'AÑO'}</td>
+                            <td class="permiso">${alumno.Permiso || 'Permiso'}</td>
+                            <td class="documento">${alumno.Documento || 'DNI'}</td>
+                            <td class="nombreAlumno">${alumno.Nombre || 'NOMBRE'}</td>
+                            <td class="cursada">${alumno.Cursada || 'AÑO'}</td>
                             `;
+                            // //validar si es true checkbox checked disabled o si es false texto vacio
+                            alumno.Libre ? row.innerHTML += `<td><input class="datosAlumnosFinales" type="checkbox" name="libre" value="${alumno.Libre}" disabled checked></td>` : row.innerHTML += `<td></td>`;
+                            //validar si es false checkbox checked enabled o si es true texto vacio
+                            //alumno.Libre ? row.innerHTML += `<td></td>` : row.innerHTML += `<td><input class="datosAlumnosFinales" type="checkbox" name="libre" value="${alumno.Libre}" disabled checked></td>`;
                             tablaFinal.appendChild(row);
                         });
                         modal.style.display = "block";
